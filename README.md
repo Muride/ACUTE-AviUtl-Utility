@@ -52,6 +52,8 @@ AviUtl向け ジェットカット＆AI文字起こし自動化ツール
    - Google GenAI SDK (Gemini)
    - MeCab / ipadic / unidic-lite
 
+- 良識の範囲で良きように使ってください。
+
 ## 作った人
 - Google Gemini
 - Geminiを使った人：https://x.com/Muride13
