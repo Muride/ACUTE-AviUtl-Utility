@@ -535,15 +535,17 @@ class App(ctk.CTk, TkinterDnD.DnDWrapper):
     def __init__(self):
         super().__init__()
         self.TkdndVersion = TkinterDnD._require(self)
-        self.title("ACUTE v1.1.0 - AviUtl Cut Utility & Text Editor")
+        self.title("ACUTE v1.1.1 - AviUtl Cut Utility & Text Editor")
         self.geometry("1200x800")
         
-        # アイコン設定 (ファイルが存在する場合のみ)
-        if os.path.exists("icon.ico"):
-            try:
+        # アイコン設定
+        try:
+            if getattr(sys, 'frozen', False):
+                self.iconbitmap(sys.executable)
+            elif os.path.exists("icon.ico"):
                 self.iconbitmap("icon.ico")
-            except:
-                pass
+        except:
+            pass
 
         # デフォルト設定
         self.text_color_hex = "000000"
@@ -684,7 +686,7 @@ class App(ctk.CTk, TkinterDnD.DnDWrapper):
         self.btn_output.pack(side="right")
 
         # 6. 実行ボタン
-        self.btn_run = ctk.CTkButton(self.frame_left, text="処理開始 (ACUTE v1.1.0)", height=60, font=("", 18, "bold"), command=self.run_process)
+        self.btn_run = ctk.CTkButton(self.frame_left, text="処理開始 (ACUTE v1.1.1)", height=60, font=("", 18, "bold"), command=self.run_process)
         self.btn_run.pack(fill="x", pady=20)
 
 
@@ -873,7 +875,7 @@ class App(ctk.CTk, TkinterDnD.DnDWrapper):
                     messagebox.showwarning("注意", "エイリアスファイルが見つからないため、シンプル設定を使用します。")
                     alias_path = ""
 
-            self.log("=== 処理開始 (ACUTE v1.1.0) ===")
+            self.log("=== 処理開始 (ACUTE v1.1.1) ===")
             self.log(f"Whisper Model: {whisper_size}")
             if use_gemini:
                 self.log(f"Gemini Model: {gemini_model}")
